@@ -71,7 +71,7 @@ func process_inputs(inputs: Array[String], _delta: float) -> void:
         if state == null:
             continue
 
-        if state == self:
+        if state == self and state.can_transition_to_state():
             return
 
         if state.can_transition_to_state():
