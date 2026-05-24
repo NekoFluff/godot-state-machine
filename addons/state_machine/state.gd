@@ -15,10 +15,6 @@ func _ready():
         if child is StateTransition:
             state_transitions.append(child)
 
-func _enter_tree():
-    if not owner or not owner is Character:
-        push_error(self.name, " (", get_path(), ") ", "The State class can only be used on nodes with a Character owner")
-
 # Called by the state machine after it has set up the state with any necessary references such as the animation player
 func _after_state_machine_ready():
     pass
