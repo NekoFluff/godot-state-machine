@@ -1,0 +1,10 @@
+# Godot
+.godot/
+.nomedia
+.import/
+*.tmp
+*.translation
+settings.cfg
+
+# Other
+.vscode
