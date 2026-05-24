@@ -10,8 +10,6 @@ var sec_since_enter: float = 0
 var is_finished: bool = false # Set by the state when it determines it has finished its action and is ready to transition to another state. Used by the state machine to determine if it should check for state_transitions or not.
 var state_transitions: Array[StateTransition] = []
 
-signal transition_to_state(new_state: State, force: bool)
-
 func _ready():
     for child in get_children():
         if child is StateTransition:
@@ -77,7 +75,7 @@ func process_inputs(inputs: Array[String], _delta: float) -> void:
             return
 
         if state.can_transition_to_state():
-            transition_to_state.emit(state, false)
+            state_machine.transition_to_state(state)
             return
 
 # Checks if any of the state_transitions are triggered by the inputs and transitions to the corresponding state if triggered.
@@ -88,7 +86,7 @@ func trigger_state_transitons(inputs: Array[String], potential_state_transitions
             var state = state_transition.state()
 
             if state.can_transition_to_state():
-                transition_to_state.emit(state, false)
+                state_machine.transition_to_state(state)
                 state_transition.expire()
                 return true
 

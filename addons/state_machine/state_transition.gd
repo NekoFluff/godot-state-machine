@@ -6,7 +6,7 @@ signal expired
 @export var triggered_by_inputs: Array[String] = []
 
 # For X seconds after transitioning away from the parent state, you can still perform this state transition as if you were still in the parent state.
-# This allows for things like coyote time, where you can still jump for a short period of time after walking off a ledge.
+# For example, this allows you to follow up basic attack with a combo attack for a brief period even after idling for a moment and already being transitioned away to an IdleState.
 @export var trigger_time_extension: float = 0.5
 
 var timer: Timer

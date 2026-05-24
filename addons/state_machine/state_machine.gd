@@ -13,7 +13,6 @@ var possible_state_transitions: Dictionary[String, StateTransition] = {}
 func _ready():
     for child in get_children():
         if child is State:
-            child.transition_to_state.connect(transition_to_state)
             child.animation_player = animation_player
             child.debug_enabled = debug_enabled
             child.state_machine = self
